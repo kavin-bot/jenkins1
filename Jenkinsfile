@@ -2,12 +2,10 @@ pipeline{
 	agent any
 	environment{
 		dockerHome = tool 'jdocker'
-		mavenHome = tool 'jmaven'
+		mavenHome = tool 'mymaven'
 		//PATH = '$dockerHome/bin:$mavenHome/bin:$PATH'
 	}
-	tools{
-		maven:"3.9.2"
-	}
+	
 	//agent{docker{image 'maven:3.6.3'}}
 	stages{
 		stage('Build'){
