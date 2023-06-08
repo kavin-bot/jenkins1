@@ -1,10 +1,10 @@
 pipeline{
 	agent {docker{image 'maven:3.6.3'}}
-	environment{
+	//environment{
 		//dockerHome = tool 'jdocker'
 		//mavenHome = tool 'mymaven'
 		//PATH = '$mavenHome/bin:$PATH'
-	}
+	//}
 	
 	
 	stages{
