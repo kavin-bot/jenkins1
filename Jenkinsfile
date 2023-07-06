@@ -1,21 +1,13 @@
 pipeline{
 	agent any
-	environment{
-		dockerHome = tool 'jdocker'
-		mavenHome = tool 'mymaven'
-		PATH = '$mavenHome/bin:$dockerHome/bin:$PATH'
+	tools{
+	 maven "JMaven"
 	}
-	
 	
 	stages{
 		stage('Build'){
 			steps{
-				echo 'PATH'
-                sh $PATH
-			
-			    sh 'mvn -version'
-				sh 'docker version'
-			    		
+			    sh 'mvn -version'	
 			   	}
 		}
 		stage('Test'){
