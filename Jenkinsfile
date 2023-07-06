@@ -13,6 +13,7 @@ pipeline{
        bat' docker -version'
       }
     }
+	}
 	
 	post{
 		success{
