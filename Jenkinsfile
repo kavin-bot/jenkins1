@@ -8,7 +8,7 @@ pipeline{
     }
   }
 	
-	}
+	
 	post{
 		success{
 			echo"success if i run"
