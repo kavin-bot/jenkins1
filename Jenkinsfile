@@ -1,14 +1,11 @@
 pipeline {
-  agent any
-  
-  tools {
-      maven "JMaven"
+  agent {
+    docker { image 'node:16-alpine' }
   }
   stages {
     stage('Test') {
       steps {
-        bat 'docker version'
-        bat 'mvn --version'
+        bat 'node --version'
       }
     }
   }
