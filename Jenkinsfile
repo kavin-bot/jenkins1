@@ -1,26 +1,15 @@
-
-
-pipeline{
-	 agent {
-    docker {
-      image 'abhishekf5/maven-abhishek-docker-agent:v1'
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
-    }
+pipeline {
+  agent any
+  
+  tools {
+      maven "JMaven"
   }
-	stages {
-    stage('Build') {
+  stages {
+    stage('Test') {
       steps {
-       bat' docker -version'
+        bat 'docker version'
+        bat 'mvn --version'
       }
     }
-	}
-	
-	post{
-		success{
-			echo"success if i run"
-		}
-		failure{
-			echo"fail if i run"
-		}
-	}
+  }
 }
