@@ -1,14 +1,12 @@
 pipeline {
-  agent any
+  agent { docker{ image 'maven:3.6.3'} }
   
   
-  tools {
-      maven "JMaven"
-  }
+ // tools {  maven "JMaven"  }
   stages {
     stage('Test') {
       steps {
-        bat 'docker version'
+     //   bat 'docker version'
         bat 'mvn --version'
       }
     }
