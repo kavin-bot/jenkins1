@@ -8,19 +8,29 @@ pipeline{
   }
 stages{
   stage('Building Package'){
+    steps{
     script{
      bat "mvn package"
     }
+    }
 }
   stage('Build Image'){
-    dockerimage= docker.build("dockerkavin/demo:${BUILD_NUMBER}")
-    
+    steps{
+      script{
+        dockerimage= docker.build("dockerkavin/demo:${BUILD_NUMBER}")
+      }
+    }
   }
   stage("push Image")
   {
-    docker.withRegistry(' ','dockerhub')
+    steps{
+      script{
+         docker.withRegistry(' ','dockerhub')
     dockerImage.push()
     dockerImage.push('Latest')
+      }
+    }
+   
   }
 }
 
